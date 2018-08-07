@@ -33,6 +33,6 @@ else:
     if key not in data:
         data[key] = []
     data[key].append(value)
-    
+
     with open(storage_path, 'w') as f:
         json.dump(data, f)
