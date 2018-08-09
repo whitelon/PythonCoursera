@@ -18,8 +18,12 @@ class File:
             return f.read()
 
     def __add__(self, file):
-        new_file = File(os.path.join(tempfile.gettempdir(), self.file_name))
-        new_file.write(self.read(), file.read())
+        import random
+        new_file = File(os.path.join(tempfile.gettempdir(),
+                                     str(random.getrandbits(32))+'.txt'))
+        with open(new_file.file_path, 'w') as f:
+            f.write(self.read())
+            f.write(file.read())
         return new_file
 
     def __str__(self):
