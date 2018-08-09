@@ -19,7 +19,7 @@ class Car(BaseCar):
     def __init__(self, brand, photo_file_name, carrying,
                  passanger_seats_count):
         super().__init__('car', brand, photo_file_name, carrying)
-        self.passanger_seats_count = passanger_seats_count
+        self.passenger_seats_count = passanger_seats_count
 
 
 class Truck(BaseCar):
@@ -42,7 +42,10 @@ class SpecMachine(BaseCar):
 
 
 def parse_whl(whl):
-    return [float(x) for x in whl.split('x')]
+    try:
+        return [float(x) for x in whl.split('x')]
+    except Exception:
+        return [None, None, None]
 
 
 def get_car_list(csv_filepath):
